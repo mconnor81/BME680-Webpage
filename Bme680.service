@@ -1,0 +1,11 @@
+[Unit]
+ Description=BME680 Sensor Reading
+ After=multi-user.target
+
+ [Service]
+ Type=idle  
+ ExecStart=/home/pi/BME680/version 2.py  
+ User=pi  
+
+ [Install]  
+ WantedBy=multi-user.target 
