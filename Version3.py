@@ -25,20 +25,6 @@ ifhost = "127.0.0.1"
 ifport = 8086
 measurement_name = "system"
 
-timestamp = datetime.datetime.utcnow()
-
-body = [
-	{
-		"measurement": measurement_name,
-		"time": timestamp,
-		"fields": {
-			"temperature": sensor.data.temperature,
-			"pressure": sensor.data.pressure,
-		  	"humidity": sensor.data.humidity,
-                  	"gas Resistance": sensor.data.gas_resistance
-		}
-	}
-]
 
 # connect to influx
 #ifclient = InfluxDBClient(ifhost,ifport,ifuser,ifpass,ifdb)
@@ -52,6 +38,7 @@ while True:
 		ifclient = InfluxDBClient(ifhost,ifport,ifuser,ifpass,ifdb)
 		if sensor.get_sensor_data():
 			output = sensor.data.temperature, sensor.data.pressure, sensor.data.humidity, sensor.data.gas_resistance
+			timestamp = datetime.datetime.utcnow()
 			log.write("{0},{1}\n".format(strftime("%Y-%m-%d %H:%M:%S"),output))
 			print(output)
 			body = [
