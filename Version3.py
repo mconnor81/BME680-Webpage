@@ -19,7 +19,7 @@ sensor.select_gas_heater_profile(0)
 
 # influx configuration - edit these
 ifuser = "pi"
-ifpass = "markis34"
+ifpass = "raspberry"
 ifdb   = "BME680"
 ifhost = "127.0.0.1"
 ifport = 8086
